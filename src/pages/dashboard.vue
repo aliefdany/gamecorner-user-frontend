@@ -1,5 +1,3 @@
 <template>
-    <GameCarousel />
-    <GameCardCarousel />
-    <!-- <OrderHistory /> -->
+    <DashboardComponent />
 </template>
