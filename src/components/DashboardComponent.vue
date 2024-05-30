@@ -14,12 +14,12 @@
           <v-card-title>Riwayat Pesanan</v-card-title>
           <v-data-table :headers="headers" :items="orders" class="elevation-1">
             <template v-slot:item.action="{ item }">
-              <v-btn class="mr-2" :color="item.status === 'Menunggu' ? 'primary' : 'grey'"
-                @click="showConfirmationDialog(item)" :disabled="item.status !== 'Menunggu'">
+              <v-btn class="mr-2" :color="item.status === 'ORDERED' ? 'primary' : 'grey'"
+                @click="showConfirmationDialog(item)" :disabled="item.status !== 'ORDERED'">
                 Konfirmasi
               </v-btn>
-              <v-btn :color="item.status === 'Menunggu' ? 'red' : 'grey'" @click="showCancelDialog(item)"
-                :disabled="item.status !== 'Menunggu'">
+              <v-btn :color="item.status === 'ORDERED' ? 'red' : 'grey'" @click="showCancelDialog(item)"
+                :disabled="item.status === 'CANCELLED'">
                 Batalkan
               </v-btn>
             </template>
@@ -183,7 +183,7 @@ export default {
     },
     confirmOrderConfirmation() {
       if (this.selectedOrder) {
-        this.selectedOrder.status = 'Confirmed';
+        this.selectedOrder.status = 'CONFIRMED';
         this.dialogConfirm = false;
       }
     },
@@ -193,7 +193,7 @@ export default {
     },
     batalPesanan() {
       if (this.selectedOrder) {
-        this.selectedOrder.status = 'Batal';
+        this.selectedOrder.status = 'CANCELLED';
         console.log("Pesanan dibatalkan");
         this.dialogCancel = false;
       }
