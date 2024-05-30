@@ -30,6 +30,7 @@
               <v-chip class="ma-2" :color="slot.available ? 'green lighten-4' : 'grey lighten-4'">
                 {{ slot.status }}
               </v-chip>
+
               <v-btn v-if="slot.status === 'AVAILABLE'" color="success" @click="book(slot)">
                 Book
               </v-btn>
@@ -79,7 +80,7 @@ export default {
     book(slot) {
       // Handle booking logic, e.g., navigate to console selection page
       console.log('Booking slot:', slot.time);
-      this.$router.push('/console-selection');
+      this.$router.push(`/booking/${slot.id}`);
     },
     async fetchSchedules() {
       const { data } = await axios.get("/schedule")
