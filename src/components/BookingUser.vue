@@ -80,7 +80,7 @@ export default {
     book(slot) {
       // Handle booking logic, e.g., navigate to console selection page
       console.log('Booking slot:', slot.time);
-      this.$router.push(`/booking/${slot.id}`);
+      this.$router.push({ path: `/booking/${slot.id}`, query: { schedule_id: slot.id, console_available_id: slot.console_available_id } });
     },
     async fetchSchedules() {
       const { data } = await axios.get("/schedule")
