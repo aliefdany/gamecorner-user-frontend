@@ -53,7 +53,8 @@
                 <v-card>
                   <v-img :src="game.img" height="150px" class="align-center"></v-img>
                   <v-card-title class="text-center">{{ game.title }}</v-card-title>
-                  <v-card-subtitle class="text-center">{{ game.description }}</v-card-subtitle>
+                  <v-card-subtitle class="text-left">{{ game.description }}</v-card-subtitle>
+                  <v-card-text class="text-left">{{ game.descgame }}</v-card-text>
                   <v-card-actions class="justify-center">
                     <v-btn :href="game.link" color="primary">PESAN SEKARANG</v-btn>
                   </v-card-actions>
@@ -103,8 +104,8 @@
     data() {
       return {
         carouselItems: [
-          { src: "require(carousel1.png')", alt: 'Image 1' },
-          { src: "require(carousel2.png')", alt: 'Image 2' },
+          { src: "gambarcarousel1.png", alt: 'Image 1' },
+          { src: "gambarcarousel2.png", alt: 'Image 2' },
           // Tambahkan lebih banyak gambar di sini
         ],
         headers: [
@@ -128,25 +129,49 @@
           {
             title: "Marvel's Spider-Man 2",
             description: "Tersedia eksklusif di Playstation 5",
-            img: "require('spiderman.png')",
+            img: "spiderman.png",
             link: '#'
           },
           {
             title: "FIFA FC 24",
             description: "Tersedia di semua konsol",
-            img: "require('fifa.png')",
+            img: "fifa.png",
             link: '#'
           },
           {
             title: "Valorant",
             description: "Tersedia di PC",
-            img: "require('valorant.png')",
+            img: "valorant.png",
             link: '#'
           },
           {
             title: "Tekken 8",
             description: "Tersedia di semua konsol",
-            img: "require('tekken.png')",
+            img: "tekken.png",
+            link: '#'
+          },
+          {
+            title: "Resident Evil",
+            description: "Tersedia di semua konsol",
+            img: "residentevil.png",
+            link: '#'
+          },
+          {
+            title: "Horizon",
+            description: "Tersedia di semua konsol",
+            img: "horizon.png",
+            link: '#'
+          },
+          {
+            title: "God of War",
+            description: "Tersedia di semua konsol",
+            img: "godofwar.png",
+            link: '#'
+          },
+          {
+            title: "Call of Duty",
+            description: "Tersedia di semua konsol",
+            img: "callofduty.png",
             link: '#'
           },
         ],
