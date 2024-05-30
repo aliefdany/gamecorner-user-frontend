@@ -45,10 +45,13 @@ export default {
             console.log('Register:', this.name, this.email, this.password, this.rememberMe);
 
             await axios.post("/register", { name: this.name, email: this.email, password: this.password })
+
+            this.$router.push("/dashboard");
         },
         login() {
             // Redirect to login page
             console.log('Redirect to login');
+            this.$router.push("/login");
         },
         passwordMatch(value) {
             return value === this.password || 'Passwords do not match';

@@ -44,8 +44,10 @@ export default {
                     // Replace with your API endpoint
                     const response = await axios.post('/login', user);
                     console.log('Login successful:', response.data);
-                    alert('Login successful!');
-                    // Redirect to home or another page if needed
+
+                    // Redirect to home or another page if needed4
+
+                    this.$router.push("/dashboard");
                 } catch (error) {
                     console.error('Login failed:', error);
                     alert('Login failed. Please try again.');
@@ -55,6 +57,7 @@ export default {
         register() {
             // Redirect to register page
             console.log('Redirect to register');
+            this.$router.push("/register");
         }
     }
 }
