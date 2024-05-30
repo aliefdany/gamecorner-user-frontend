@@ -91,6 +91,8 @@
 </template>
 
 <script>
+import axios from "../axios"
+
 export default {
   data() {
     return {
@@ -110,11 +112,11 @@ export default {
         { text: 'Aksi', value: 'action', sortable: false },
       ],
       orders: [
-        { status: 'Menunggu', jumlahController: 2, nomorKonsol: 5, namaKonsol: 'Playstation 5', tanggal: '2024-05-01', jamMulai: '11:30', jamBerakhir: '12:30' },
-        { status: 'Batal', jumlahController: 1, nomorKonsol: 1, namaKonsol: 'Xbox One', tanggal: '2024-05-11', jamMulai: '13:30', jamBerakhir: '14:30' },
-        { status: 'Selesai', jumlahController: 1, nomorKonsol: 5, namaKonsol: 'Playstation 5', tanggal: '2024-05-09', jamMulai: '10:30', jamBerakhir: '11:30' },
-        { status: 'Selesai', jumlahController: 2, nomorKonsol: 1, namaKonsol: 'PC', tanggal: '2024-05-08', jamMulai: '12:30', jamBerakhir: '13:30' },
-        { status: 'Batal', jumlahController: 2, nomorKonsol: 2, namaKonsol: 'Playstation', tanggal: '2024-05-04', jamMulai: '14:30', jamBerakhir: '15:30' },
+        // { status: 'Menunggu', jumlahController: 2, nomorKonsol: 5, namaKonsol: 'Playstation 5', tanggal: '2024-05-01', jamMulai: '11:30', jamBerakhir: '12:30' },
+        // { status: 'Batal', jumlahController: 1, nomorKonsol: 1, namaKonsol: 'Xbox One', tanggal: '2024-05-11', jamMulai: '13:30', jamBerakhir: '14:30' },
+        // { status: 'Selesai', jumlahController: 1, nomorKonsol: 5, namaKonsol: 'Playstation 5', tanggal: '2024-05-09', jamMulai: '10:30', jamBerakhir: '11:30' },
+        // { status: 'Selesai', jumlahController: 2, nomorKonsol: 1, namaKonsol: 'PC', tanggal: '2024-05-08', jamMulai: '12:30', jamBerakhir: '13:30' },
+        // { status: 'Batal', jumlahController: 2, nomorKonsol: 2, namaKonsol: 'Playstation', tanggal: '2024-05-04', jamMulai: '14:30', jamBerakhir: '15:30' },
       ],
       games: [
         {
@@ -171,6 +173,9 @@ export default {
       selectedOrder: null,
     };
   },
+  created() {
+    this.fetchHistory()
+  },
   methods: {
     showConfirmationDialog(order) {
       this.selectedOrder = order;
@@ -193,6 +198,17 @@ export default {
         this.dialogCancel = false;
       }
     },
+    async fetchHistory() {
+      const { data } = await axios.get("/dashboard")
+      console.log(data);
+
+      const histories = data.map((d) => ({ status: d.status, jumlahController: d.controller_amount, namaKonsol: d.name, tanggal: d.date, jamMulai: d.start, jamBerakhir: d.end }))
+
+
+      // { status: 'Menunggu', jumlahController: 2, nomorKonsol: 5, namaKonsol: 'Playstation 5', tanggal: '2024-05-01', jamMulai: '11:30', jamBerakhir: '12:30' },
+
+      this.orders = histories;
+    }
   },
 };
 </script>
