@@ -1,5 +1,3 @@
 <template>
-    <Header />
-
     <BookingUser />
 </template>
