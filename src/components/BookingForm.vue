@@ -47,7 +47,8 @@ export default {
             this.jumlahConsole = 1;
         },
         async bookNow() {
-            await axios.post("/order", { schedule_id: this.$route.query.schedule_id, console_available_id: this.$route.query.console_available_id })
+            await axios.post("/order", { schedule_id: this.$route.query.schedule_id, console_available_id: this.$route.query.console_available_id, controller_amount: this.jumlahConsole })
+            this.$router.back()
             // this.$router.push({ name: 'Dashboard' });
         }
     }
