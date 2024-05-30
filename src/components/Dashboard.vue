@@ -10,26 +10,30 @@
               <v-img :src="item.src" :alt="item.alt"></v-img>
             </v-carousel-item>
           </v-carousel>
-          <v-card class="mt-4">
-            <v-card-title>Riwayat Pesanan</v-card-title>
+          <v-card class="mt-1">
+            <v-card-title class="pt-4 pb-2">Riwayat Pesanan</v-card-title>
             <v-data-table :headers="headers" :items="orders" class="elevation-1">
               <template v-slot:item.action="{ item }">
-                <v-btn
-                  class="mr-2"
-                  :color="item.status === 'Menunggu' ? 'primary' : 'grey'"
-                  @click="showConfirmationDialog(item)"
-                  :disabled="item.status !== 'Menunggu'"
-                >
-                  Konfirmasi
-                </v-btn>
-                <v-btn
-                  :color="item.status === 'Menunggu' ? 'red' : 'grey'"
-                  @click="showCancelDialog(item)"
-                  :disabled="item.status !== 'Menunggu'"
-                >
-                  Batalkan
-                </v-btn>
-              </template>
+
+   <div class="d-flex justify-end">
+    <v-btn
+      class="mr-4"
+      :color="item.status === 'Menunggu' ? 'primary' : 'grey'"
+      @click="showConfirmationDialog(item)"
+      :disabled="item.status !== 'Menunggu'"
+    >
+      Konfirmasi
+    </v-btn>
+    <v-btn
+      :color="item.status === 'Menunggu' ? 'red' : 'grey'"
+      @click="showCancelDialog(item)"
+      :disabled="item.status !== 'Menunggu'"
+    >
+      Batalkan
+    </v-btn>
+  </div>
+</template>
+
             </v-data-table>
           </v-card>
           <v-card class="mt-4">
