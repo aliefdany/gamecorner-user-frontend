@@ -1,3 +1,4 @@
 <template>
+    <Header />
     <BookingForm />
 </template>

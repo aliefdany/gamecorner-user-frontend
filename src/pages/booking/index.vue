@@ -1,3 +1,4 @@
 <template>
+    <Header />
     <BookingUser />
 </template>

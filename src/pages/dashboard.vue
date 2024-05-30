@@ -1,3 +1,4 @@
 <template>
+    <Header />
     <DashboardComponent />
 </template>

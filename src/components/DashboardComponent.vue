@@ -1,8 +1,5 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
-      <v-toolbar-title>FILKOM GameCorner</v-toolbar-title>
-    </v-app-bar>
     <v-main>
       <v-container>
         <v-carousel cycle hide-delimiter-background height="400px">
@@ -17,11 +14,11 @@
 
               <div class="d-flex justify-end">
                 <v-btn class="mr-4" :color="item.status === 'ORDERED' ? 'primary' : 'grey'"
-                  @click="showConfirmationDialog(item)" :disabled="item.status !== 'CANCELLED'">
+                  @click="showConfirmationDialog(item)" :disabled="item.status === 'CONFIRMED'">
                   Konfirmasi
                 </v-btn>
                 <v-btn :color="item.status === 'ORDERED' ? 'red' : 'grey'" @click="showCancelDialog(item)"
-                  :disabled="item.status !== 'CANCELLED'">
+                  :disabled="item.status === 'CANCELLED'">
                   Batalkan
                 </v-btn>
               </div>
